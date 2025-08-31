@@ -44,7 +44,7 @@ const Gallery = () => {
         <h2 className="text-3xl font-bold text-gray-800">Gallery</h2>
         <button
           onClick={() => setShowAddForm(true)}
-          className="bg-[#166a63] text-white px-5 py-3 rounded-xl hover:bg-[#11534e] shadow-sm transition"
+          className="bg-green-800 text-white px-5 py-3 rounded-xl hover:bg-green-700 shadow-sm transition"
         >
           Add New Item
         </button>
@@ -57,7 +57,7 @@ const Gallery = () => {
           {galleryItems.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden relative hover:bg-green-50 transition cursor-pointer"
+              className="bg-green-100 rounded-xl shadow-sm border border-gray-100 overflow-hidden relative hover:bg-green-50 transition cursor-pointer"
             >
               <img
                 src={item.url}
@@ -89,7 +89,7 @@ const Gallery = () => {
       )}
 
       {showAddForm && (
-        <div className="fixed inset-0 bg-white z-50 overflow-auto p-10 flex justify-center items-start min-h-screen">
+        <div className="bg-green-800 hover:bg-green-700">
           <AddGallery
             gallery={editingItem}
             onSave={handleSaveGallery}

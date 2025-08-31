@@ -1,6 +1,6 @@
 import React from "react";
 
-const PortfolioPagination = ({ currentPage, totalPages, onPageChange }) => {
+const TestimonialPagination = ({ currentPage, totalPages, onPageChange }) => {
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
@@ -53,4 +53,4 @@ const PortfolioPagination = ({ currentPage, totalPages, onPageChange }) => {
   );
 };
 
-export default PortfolioPagination;
+export default TestimonialPagination;

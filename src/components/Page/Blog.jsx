@@ -99,7 +99,7 @@ const Blog = () => {
           </div>
           <button
             onClick={handleAddBlog}
-            className="bg-green-800 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow transition"
+            className="bg-green-800  hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow transition"
           >
             Add Blog
           </button>

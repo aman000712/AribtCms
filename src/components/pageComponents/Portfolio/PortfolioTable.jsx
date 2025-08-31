@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 
+// Dropdown menu for actions
 export const DropdownMenu = ({ item, isOpen, onClose, onEdit, onDelete, triggerRect }) => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -58,8 +59,10 @@ export const DropdownMenu = ({ item, isOpen, onClose, onEdit, onDelete, triggerR
   );
 };
 
-export const PortfolioRow = ({ item, onActionClick }) => (
-  <tr className="border-b hover:bg-green-50/70 transition relative">
+// Single portfolio row
+export const PortfolioRow = ({ item, index, onActionClick }) => (
+  <tr className="border-b hover:bg-green-50 transition relative cursor-pointer">
+    <td className="px-4 py-3 font-medium text-gray-700">{index + 1}</td>
     <td className="px-4 py-3">
       <img src={item.image} alt={item.title} className="w-10 h-10 rounded-full object-cover shadow-sm" />
     </td>
@@ -69,7 +72,7 @@ export const PortfolioRow = ({ item, onActionClick }) => (
     <td className="px-4 py-3 relative text-right">
       <button
         onClick={(e) => onActionClick(e, item.id)}
-        className="p-2 rounded-full hover:bg-gray-100 transition text-gray-600"
+        className="p-2 rounded-full hover:bg-green-100 transition text-gray-600"
       >
         ⋮
       </button>
@@ -77,11 +80,13 @@ export const PortfolioRow = ({ item, onActionClick }) => (
   </tr>
 );
 
+// Full portfolio table
 export const PortfolioTable = ({ portfolio, onActionClick }) => (
-  <div className="border-b bg-white rounded-lg shadow-sm mb-4 overflow-x-auto hover:bg-green-50 transition">
-    <table className="w-full text-sm text-left text-gray-600">
-      <thead className="bg-green-100 text-gray-700 font-semibold text-sm">
+  <div className="border rounded-lg shadow-sm overflow-x-auto mb-4 bg-white">
+    <table className="w-full text-sm text-left">
+      <thead className="bg-green-200 text-gray-800 font-semibold text-sm">
         <tr>
+          <th className="px-4 py-3">Index</th>
           <th className="px-4 py-3">Image</th>
           <th className="px-4 py-3">Title</th>
           <th className="px-4 py-3">Year</th>
@@ -91,10 +96,12 @@ export const PortfolioTable = ({ portfolio, onActionClick }) => (
       </thead>
       <tbody>
         {portfolio.length > 0 ? (
-          portfolio.map((p) => <PortfolioRow key={p.id} item={p} onActionClick={onActionClick} />)
+          portfolio.map((p, index) => (
+            <PortfolioRow key={p.id} index={index} item={p} onActionClick={onActionClick} />
+          ))
         ) : (
           <tr>
-            <td colSpan={5} className="px-4 py-6 text-center text-gray-500">
+            <td colSpan={6} className="px-4 py-6 text-center text-gray-500">
               No portfolios found.
             </td>
           </tr>
@@ -104,6 +111,7 @@ export const PortfolioTable = ({ portfolio, onActionClick }) => (
   </div>
 );
 
+// Portfolio header
 export const PortfolioHeader = ({ onAddPortfolio }) => (
   <div className="flex justify-between items-center mb-6">
     <h2 className="text-2xl font-bold text-gray-800">Portfolio Management</h2>

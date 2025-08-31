@@ -8,6 +8,11 @@ export const navItems = [
   {
     title: "Dashboard",
     icon: RiHomeHeartLine,
+    to: "/dashboard"
+  },
+  {
+    title: "Home",
+    icon: RiHomeHeartLine,
     to: "/"
   },
   {
@@ -39,27 +44,17 @@ export const navItems = [
    {
     title: "Testimonials",
     icon: MdOutlinePermContactCalendar,
-    to: "/notice"
+    to: "/testimonials"
   },
   {
     title: "Contact Inquries",
     icon: IoMdPerson,
-    to: "/our-bod"
+    to: "/contact"
   },
   {
-    title: "User Management",
+    title: "Footer Management",
     icon: IoMdPerson,
-    to: "/our-faculty"
-  },
-  {
-    title: "SEO and Settings",
-    icon: IoMdPerson,
-    to: "/our-staff"
-  },
-  {
-    title: "Events/Workshops",
-    icon: MdOutlinePermContactCalendar,
-    to: "/gallery"
+    to: "/footer"
   },
 
 ];

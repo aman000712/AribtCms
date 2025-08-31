@@ -236,7 +236,7 @@ const AddTeam = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-6 py-2 bg-[#166a63] text-white rounded-xl hover:bg-[#11534e] shadow-md transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-6 py-2 bg-green-800 text-white rounded-xl hover:bg-green-700 shadow-md transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting
                     ? "Saving..."

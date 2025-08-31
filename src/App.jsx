@@ -15,13 +15,20 @@ import ServiceView from "./components/pageComponents/Services/ServiceView";
 import BlogView from "./components/pageComponents/Blog/BlogView";
 import AddPortfolio from "./components/pageComponents/Portfolio/AddPortfolio";
 import PortfolioView from "./components/pageComponents/Portfolio/PortfolioView";
+import Testimonials from "./components/Page/Testimonial";
+import AddTestimonial from "./components/pageComponents/Testimonial/AddTestimonial";
+import TestimonialView from "./components/pageComponents/Testimonial/TestimonialView";
+import Contact from './components/Page/Contact';
+import FooterManager from './components/Page/Footer';
+import Home from "./components/Page/Home";
+import Dashboard from "./components/Page/Dashboard";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<div />} />
+          <Route path="/" element={<Home />} />
 
           {/* <Route path="courses/addcourse" element={<AddCourse />} /> */}
           {/* <Route path="courses" element={<Courses />} /> */}
@@ -40,6 +47,12 @@ const App = () => {
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="addportfolio" element={<AddPortfolio />} />
           <Route path="/portfolioview/:id" element={<PortfolioView />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/testimonial/:id" element={<TestimonialView />} />
+          <Route path="/addtestimonial" element={<AddTestimonial />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/footer" element={<FooterManager />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>
