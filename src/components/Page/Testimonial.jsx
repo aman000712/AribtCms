@@ -19,7 +19,6 @@ const Testimonials = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const testimonialsPerPage = 5;
 
-  // Load testimonials from localStorage
   useEffect(() => {
     const stored = localStorage.getItem("testimonials");
     if (stored) setTestimonials(JSON.parse(stored));
@@ -76,7 +75,6 @@ const Testimonials = () => {
     return () => window.removeEventListener("click", handleClickOutside);
   }, [actionOpen]);
 
-  // Filtered & paginated testimonials
   const filteredTestimonials = testimonials.filter(
     (t) =>
       t.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -92,9 +90,7 @@ const Testimonials = () => {
   const totalPages =
     Math.ceil(filteredTestimonials.length / testimonialsPerPage) || 1;
 
-  // --- Render ---
   if (showForm) {
-    // ONLY show Add/Edit form
     return (
       <AddTestimonial
         testimonial={editItem}
@@ -107,10 +103,8 @@ const Testimonials = () => {
     );
   }
 
-  // Default: table view
   return (
     <div className="py-16">
-      {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-xl font-semibold">Testimonials</h1>
         <button
@@ -124,7 +118,6 @@ const Testimonials = () => {
         </button>
       </div>
 
-      {/* Search */}
       <div className="mb-5">
         <input
           type="text"
@@ -135,20 +128,17 @@ const Testimonials = () => {
         />
       </div>
 
-      {/* Table */}
       <TestimonialTable
         testimonials={currentTestimonials}
         onActionClick={handleActionClick}
       />
 
-      {/* Pagination */}
       <TestimonialPagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={(page) => setCurrentPage(page)}
       />
 
-      {/* Dropdown */}
       {actionOpen && (
         <TestimonialDropdown
           testimonial={testimonials.find((t) => t.id === actionOpen)}
@@ -161,7 +151,6 @@ const Testimonials = () => {
         />
       )}
 
-      {/* View modal */}
       {viewItem && (
         <TestimonialView
           testimonial={viewItem}

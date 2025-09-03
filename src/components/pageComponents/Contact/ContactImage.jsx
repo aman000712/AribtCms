@@ -1,4 +1,3 @@
-// ContactImages.jsx
 import React, { useState, useEffect } from "react";
 import { FiEdit, FiTrash2, FiPlus } from "react-icons/fi";
 

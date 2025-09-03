@@ -10,7 +10,7 @@ const ContactContainer = () => {
         : [
             { key: "Heading", value: "Let's level up your brand, together" },
             { key: "Subheading", value: "You can reach us anytime via info@e-aribt.com" },
-            { key: "Image", value: "" }, // Hero image
+            { key: "Image", value: "" }, 
             { key: "EmailTitle", value: "Developer working on code" },
             { key: "Email", value: "info@e-aribt.com" },
             { key: "PhoneTitle", value: "Our friendly team is here to help" },

@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import { useNavigate } from "react-router-dom";
 
-// Dropdown menu for blog actions
 export const BlogDropdownMenu = ({ blog, isOpen, onClose, onEdit, onDelete, triggerRect }) => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -59,7 +58,6 @@ export const BlogDropdownMenu = ({ blog, isOpen, onClose, onEdit, onDelete, trig
   );
 };
 
-// Single blog row
 export const BlogRow = ({ blog, index, onActionClick }) => (
   <tr className="border-b bg-white hover:bg-green-50 transition relative cursor-pointer rounded-lg">
     <td className="px-4 py-3 font-medium text-gray-700">{index + 1}</td>
@@ -87,7 +85,6 @@ export const BlogRow = ({ blog, index, onActionClick }) => (
   </tr>
 );
 
-// Full blog table
 export const BlogTable = ({ blogs, onActionClick }) => (
   <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm mb-4 bg-white">
     <table className="w-full text-sm text-left text-gray-600">

@@ -4,7 +4,6 @@ import ServicesSearch from "../pageComponents/Services/ServicesSearch";
 import ServicesPagination from "../pageComponents/Services/ServicesPagination";
 import ReactDOM from "react-dom";
 
-// Dropdown menu for service actions
 const DropdownMenu = ({ service, isOpen, onClose, onEdit, onDelete, triggerRect }) => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -61,7 +60,6 @@ const DropdownMenu = ({ service, isOpen, onClose, onEdit, onDelete, triggerRect 
   );
 };
 
-// Single service row
 const ServiceRow = ({ service, index, onActionClick }) => (
   <tr className="border-b bg-white hover:bg-green-50 transition relative cursor-pointer rounded-lg">
     <td className="px-4 py-3 font-medium text-gray-700">{index + 1}</td>
@@ -85,7 +83,6 @@ const ServiceRow = ({ service, index, onActionClick }) => (
   </tr>
 );
 
-// Services table
 const ServicesTable = ({ services, onActionClick }) => (
   <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm mb-4 bg-white">
     <table className="w-full text-sm text-left text-gray-600">
@@ -115,7 +112,6 @@ const ServicesTable = ({ services, onActionClick }) => (
   </div>
 );
 
-// Main Services page
 const Services = () => {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState("");

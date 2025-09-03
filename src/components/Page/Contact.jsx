@@ -1,4 +1,3 @@
-// Contact.jsx
 import React, { useState, useEffect } from "react";
 import ContactField from "../pageComponents/Contact/ContactField";
 import ContactImages from "../pageComponents/Contact/ContactImage";
@@ -45,10 +44,8 @@ const Contact = () => {
           Contact Info
         </h1>
 
-        {/* Hero Image Management */}
         <ContactImages />
 
-        {/* Text Fields */}
         <div className="space-y-4 mt-6">
           {fields.map((field, index) => (
             <ContactField
@@ -63,7 +60,6 @@ const Contact = () => {
           ))}
         </div>
 
-        {/* Add new field */}
         <div className="flex flex-col md:flex-row gap-3 mt-6">
           <input
             type="text"

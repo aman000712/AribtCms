@@ -127,7 +127,6 @@ const LogoManager = () => {
           </div>
         ))}
 
-        {/* Add New Logo */}
         {editIndex === null && (
           <div className="flex flex-col items-center justify-center bg-white rounded-2xl border border-gray-200 h-40 p-2 shadow-sm hover:shadow-md transition">
             <input

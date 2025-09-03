@@ -1,4 +1,3 @@
-// FooterManager.jsx
 import React, { useState } from "react";
 import SocialLinks from "../pageComponents/Footer/SocialLinks";
 import LogoManager from "../pageComponents/Footer/LogoManager";
@@ -10,7 +9,6 @@ const Footer = () => {
     <div className="py-12 px-4 max-w-2xl mx-auto  rounded-xl shadow-sm ">
       <h1 className="text-2xl font-bold text-center mb-4">Footer Manager</h1>
 
-      {/* Tabs */}
       <div className="flex justify-center gap-2 mb-4 border-b">
         <button
           onClick={() => setActiveTab("social")}
@@ -34,7 +32,6 @@ const Footer = () => {
         </button>
       </div>
 
-      {/* Active Tab Content */}
       <div className="space-y-4">
         {activeTab === "social" && <SocialLinks />}
         {activeTab === "logo" && <LogoManager />}

@@ -63,7 +63,7 @@ const Gallery = () => {
               <img
                 src={item.url}
                 alt={item.category}
-                className="w-full h-32 object-cover rounded-t-xl" // smaller height
+                className="w-full h-32 object-cover rounded-t-xl" 
               />
               <div className="p-3 flex justify-between items-center">
                 <span className="px-2 py-0.5 inline-flex text-xs font-semibold rounded-full bg-teal-100 text-teal-800 capitalize">

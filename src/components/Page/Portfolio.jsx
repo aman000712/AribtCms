@@ -4,7 +4,6 @@ import PortfolioSearch from "../pageComponents/Portfolio/PortfolioSearch";
 import PortfolioPagination from "../pageComponents/Portfolio/PortfolioPagination";
 import ReactDOM from "react-dom";
 
-// Dropdown menu for portfolio actions
 const DropdownMenu = ({ item, isOpen, onClose, onEdit, onDelete, triggerRect }) => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -61,7 +60,6 @@ const DropdownMenu = ({ item, isOpen, onClose, onEdit, onDelete, triggerRect }) 
   );
 };
 
-// Single portfolio row
 const PortfolioRow = ({ item, index, onActionClick, onRowClick }) => (
   <tr
     className="border-b bg-white hover:bg-green-50 transition relative cursor-pointer rounded-lg"
@@ -89,7 +87,6 @@ const PortfolioRow = ({ item, index, onActionClick, onRowClick }) => (
   </tr>
 );
 
-// Portfolio table
 const PortfolioTable = ({ portfolio, onActionClick, onRowClick }) => (
   <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm mb-4 bg-white">
     <table className="w-full text-sm text-left text-gray-600">
@@ -126,7 +123,6 @@ const PortfolioTable = ({ portfolio, onActionClick, onRowClick }) => (
   </div>
 );
 
-// Portfolio header
 const PortfolioHeader = ({ onAddPortfolio }) => (
   <div className="flex justify-between items-center mb-6">
     <h2 className="text-2xl font-bold text-gray-800">Portfolio Management</h2>
@@ -139,7 +135,6 @@ const PortfolioHeader = ({ onAddPortfolio }) => (
   </div>
 );
 
-// Main Portfolio page
 const Portfolio = () => {
   const [portfolio, setPortfolio] = useState([]);
   const [search, setSearch] = useState("");

@@ -1,4 +1,3 @@
-// navItems.js
 import { RiHomeHeartLine } from "react-icons/ri";
 import { MdOutlinePermContactCalendar, MdOutlineSchool } from "react-icons/md";
 import { IoMdPerson } from "react-icons/io";

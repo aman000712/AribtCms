@@ -103,7 +103,6 @@ const SocialLinks = () => {
         </div>
       ))}
 
-      {/* Add New */}
       <div className="flex gap-1 mt-2">
         <input
           type="text"

@@ -7,13 +7,11 @@ const Sidebar = () => {
 
   return (
     <div className="h-screen w-64 flex flex-col bg-white border-r border-gray-100 shadow-sm">
-      {/* Header */}
       <div className="px-6 py-5">
         <h1 className="text-xl font-bold text-green-700">ARIBT</h1>
         <p className="text-green-800 text-xs mt-1">Navigation Panel</p>
       </div>
 
-      {/* Navigation Items */}
       <nav className="flex-1 px-3 py-6 overflow-y-auto">
         <ul className="space-y-1">
           {navItems.map((item) => {
@@ -49,7 +47,6 @@ const Sidebar = () => {
         </ul>
       </nav>
 
-      {/* Logout Section */}
       <div className="px-3 py-4 border-t border-gray-100 mt-auto">
         <button
           className={`

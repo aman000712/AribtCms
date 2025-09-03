@@ -6,7 +6,7 @@ import ServicesSearch from "../pageComponents/Services/ServicesSearch";
 import ServicesPagination from "../pageComponents/Services/ServicesPagination";
 import { BlogTable } from "../pageComponents/Blog/BlogTable";
 import BlogCard from "../pageComponents/Blog/BlogCard";
-import BlogDropdown from "../pageComponents/Blog/BlogDropdown";
+import BlogDropdown from "../pageComponents/Blog/BlogdropDown";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
