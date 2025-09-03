@@ -52,7 +52,7 @@ export const navItems = [
     to: "/contact"
   },
   {
-    title: "Footer Management",
+    title: " Management",
     icon: IoMdPerson,
     to: "/footer"
   },

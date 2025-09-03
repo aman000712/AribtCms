@@ -9,6 +9,7 @@ const GallerySchema = Yup.object().shape({
 
 const AddGallery = ({ gallery, onSave, onCancel }) => {
   const [imagePreview, setImagePreview] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const isEdit = Boolean(gallery);
 
   useEffect(() => {
@@ -38,97 +39,132 @@ const AddGallery = ({ gallery, onSave, onCancel }) => {
   };
 
   return (
-    <div className="w-full max-w-2xl shadow-xl rounded-3xl p-10 bg-white">
-      <div className="text-center mb-8 pb-4 border-b border-gray-200">
-        <h2 className="text-2xl font-bold text-gray-800">
-          {isEdit ? "Edit Media" : "Add New Media"}
-        </h2>
-      </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-95 p-6">
+      <div className="bg-white shadow-xl rounded-3xl w-full max-w-2xl p-10 relative">
+        <button
+          onClick={onCancel}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold"
+        >
+          &times;
+        </button>
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={GallerySchema}
-        onSubmit={(values) =>
-          onSave({ ...gallery, ...values, id: gallery?.id || Date.now() })
-        }
-        enableReinitialize
-      >
-        {({ setFieldValue }) => (
-          <Form className="grid grid-cols-1 gap-6">
-            <div>
-              <label className="block text-gray-700 font-medium mb-2">
-                Category *
-              </label>
-              <Field
-                as="select"
-                name="category"
-                className="w-full border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#166a63] shadow-sm transition"
-              >
-                <option value="">Select category</option>
-                <option value="projects">Projects</option>
-                <option value="teamworks">Teamworks</option>
-                <option value="tours">Tours</option>
-                <option value="sports">Sports</option>
-              </Field>
-              <ErrorMessage
-                name="category"
-                component="div"
-                className="text-red-500 text-sm mt-1"
-              />
-            </div>
+        <div className="mb-8 pb-4 border-b border-gray-200">
+          <h2 className="text-2xl font-bold text-gray-800 text-center">
+            {isEdit ? "Edit Gallery Item" : "Add New Gallery Item"}
+          </h2>
+        </div>
 
-            <div>
-              <label className="block text-gray-700 font-medium mb-2">
-                Image *
-              </label>
-              <div
-                className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center cursor-pointer hover:border-[#166a63] transition"
-                onClick={() => document.getElementById("galleryImage").click()}
-              >
-                {imagePreview ? (
-                  <img
-                    src={imagePreview}
-                    alt="Preview"
-                    className="w-full h-48 object-contain rounded-lg mx-auto mb-2"
-                  />
-                ) : (
-                  <p className="text-gray-500">
-                    Click to upload image (PNG, JPG up to 5MB)
-                  </p>
-                )}
-                <input
-                  type="file"
-                  id="galleryImage"
-                  accept="image/*"
-                  className="hidden"
-                  onChange={(e) => handleImageChange(e, setFieldValue)}
+        <Formik
+          initialValues={initialValues}
+          validationSchema={GallerySchema}
+          onSubmit={async (values) => {
+            setIsSubmitting(true);
+            try {
+              await onSave({
+                ...gallery,
+                ...values,
+                id: gallery?.id || Date.now(),
+                url: imagePreview,
+              });
+            } finally {
+              setIsSubmitting(false);
+            }
+          }}
+          enableReinitialize
+        >
+          {({ setFieldValue }) => (
+            <Form className="grid grid-cols-1 gap-6">
+              <div>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Category *
+                </label>
+                <Field
+                  as="select"
+                  name="category"
+                  className="w-full border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#166a63] shadow-sm transition"
+                >
+                  <option value="">Select category</option>
+                  <option value="projects">Projects</option>
+                  <option value="teamworks">Teamworks</option>
+                  <option value="tours">Tours</option>
+                  <option value="sports">Sports</option>
+                </Field>
+                <ErrorMessage
+                  name="category"
+                  component="div"
+                  className="text-red-500 text-sm mt-1"
                 />
               </div>
-              <ErrorMessage
-                name="url"
-                component="div"
-                className="text-red-500 text-sm mt-1"
-              />
-            </div>
 
-            <div className="flex justify-end gap-4 mt-6 pt-4 border-t border-gray-200">
-              <button
-                type="button"
-                onClick={onCancel}
-                className="px-6 py-2 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 shadow-sm transition"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="px-6 py-2 bg-[#166a63] text-white rounded-xl hover:bg-[#11534e] shadow-md transition"
-              >
-                {isEdit ? "Update" : "Add"}
-              </button>
-            </div>
-          </Form>
-        )}
-      </Formik>
+              <div>
+                <label className="block text-gray-700 font-medium mb-2">
+                  Image *
+                </label>
+                <div
+                  className="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-6 cursor-pointer hover:border-[#166a63] transition"
+                  onClick={() => document.getElementById("fileInput").click()}
+                >
+                  {imagePreview ? (
+                    <div className="text-center">
+                      <img
+                        src={imagePreview}
+                        alt="Preview"
+                        className="w-48 h-48 object-cover rounded-lg mb-4 shadow-md mx-auto"
+                      />
+                      <p className="text-sm text-gray-600">
+                        Click to change image
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="text-center py-6">
+                      <p className="text-gray-500 text-sm">
+                        Click to upload or drag & drop
+                      </p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        PNG, JPG up to 5MB
+                      </p>
+                    </div>
+                  )}
+                  <input
+                    id="fileInput"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleImageChange(e, setFieldValue)}
+                    className="hidden"
+                  />
+                </div>
+                <ErrorMessage
+                  name="url"
+                  component="div"
+                  className="text-red-500 text-sm mt-1"
+                />
+              </div>
+
+              <div className="flex justify-end gap-4 mt-8 pt-6 border-t border-gray-200">
+                <button
+                  type="button"
+                  onClick={onCancel}
+                  className="px-6 py-2 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 shadow-sm transition font-medium"
+                  disabled={isSubmitting}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2 bg-green-800 text-white rounded-xl hover:bg-green-700 shadow-md transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting
+                    ? "Saving..."
+                    : isEdit
+                    ? "Update Gallery Item"
+                    : "Add Gallery Item"}
+                </button>
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 };

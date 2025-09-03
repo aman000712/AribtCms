@@ -52,7 +52,7 @@ const ContactContainer = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen p-6">
+    <div className="bg-white min-h-screen p-6">
       <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
         <h1 className="text-3xl font-bold mb-6">Contact Info</h1>
 

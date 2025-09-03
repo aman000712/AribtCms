@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { FiGrid, FiList } from "react-icons/fi";
 
 import ServicesSearch from "../pageComponents/Services/ServicesSearch";
 import ServicesPagination from "../pageComponents/Services/ServicesPagination";
@@ -85,21 +86,23 @@ const Blog = () => {
         <div className="flex items-center gap-3">
           <div className="bg-gray-100 rounded-xl p-1 flex">
             <button
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === "table" ? "bg-white shadow text-green-700" : "text-gray-600 hover:text-green-800"}`}
+              className={`p-2 rounded-lg transition ${viewMode === "table" ? "bg-white shadow text-green-700" : "text-gray-600 hover:text-green-800"}`}
               onClick={() => setViewMode("table")}
+              title="Table View"
             >
-              Table View
+              <FiList size={20} />
             </button>
             <button
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === "grid" ? "bg-white shadow text-green-700" : "text-gray-600 hover:text-green-800"}`}
+              className={`p-2 rounded-lg transition ${viewMode === "grid" ? "bg-white shadow text-green-700" : "text-gray-600 hover:text-green-800"}`}
               onClick={() => setViewMode("grid")}
+              title="Card View"
             >
-              Card View
+              <FiGrid size={20} />
             </button>
           </div>
           <button
             onClick={handleAddBlog}
-            className="bg-green-800  hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow transition"
+            className="bg-green-800 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow transition"
           >
             Add Blog
           </button>

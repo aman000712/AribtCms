@@ -39,7 +39,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-green-50 min-h-screen p-6">
+    <div className="bg-white min-h-screen p-6">
       <div className="max-w-4xl mx-auto bg-white p-8 rounded-3xl shadow-xl space-y-6">
         <h1 className="text-3xl font-bold text-center text-green-800 mb-6">
           Contact Info

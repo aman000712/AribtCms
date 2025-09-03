@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FiEdit, FiTrash2, FiCheck, FiX } from "react-icons/fi";
+import { FiEdit, FiTrash2, FiCheck, FiX, FiPlus } from "react-icons/fi";
 
 const SocialLinks = () => {
-  
   const [links, setLinks] = useState(() => {
     try {
       const saved = localStorage.getItem("footerSocial");
@@ -37,6 +36,7 @@ const SocialLinks = () => {
   };
 
   const handleDelete = (index) => setLinks(links.filter((_, i) => i !== index));
+
   const handleAdd = () => {
     if (!newKey.trim() || !newValue.trim()) return;
     setLinks([...links, { key: newKey, value: newValue }]);
@@ -45,12 +45,13 @@ const SocialLinks = () => {
   };
 
   return (
-    <div className="bg-green-50 p-6 rounded-2xl shadow-md">
-      <h2 className="font-bold text-xl mb-3 text-green-900">Social Links</h2>
+    <div className=" p-4 rounded-xl shadow-sm max-w-xl mx-auto">
+      <h2 className="font-bold text-lg mb-3 text-green-900 text-center">Social Links</h2>
+
       {links.map((link, index) => (
         <div
           key={index}
-          className="flex justify-between items-center bg-white p-3 rounded-lg mb-2 shadow-sm"
+          className="flex justify-between items-center bg-white p-2 rounded-lg mb-2 shadow-sm text-sm"
         >
           {editIndex === index ? (
             <>
@@ -58,43 +59,43 @@ const SocialLinks = () => {
                 type="text"
                 value={editValue}
                 onChange={(e) => setEditValue(e.target.value)}
-                className="flex-1 px-3 py-2 border border-green-300 rounded-lg text-gray-700 resize-none focus:outline-none focus:ring-2 focus:ring-green-700"
+                className="flex-1 px-2 py-1 border border-green-300 rounded text-gray-700 text-xs focus:outline-none focus:ring-1 focus:ring-green-700"
                 autoFocus
               />
-              <div className="flex flex-col gap-2 ml-3">
+              <div className="flex gap-1 ml-2">
                 <button
                   onClick={() => handleSave(index)}
-                  className="p-2 rounded-lg text-green-700 hover:bg-green-100 transition"
+                  className="p-1 rounded-lg text-green-700 hover:bg-green-100 transition"
                   title="Save"
                 >
-                  <FiCheck size={18} />
+                  <FiCheck size={16} />
                 </button>
                 <button
                   onClick={() => setEditIndex(null)}
-                  className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition"
+                  className="p-1 rounded-lg text-gray-600 hover:bg-gray-100 transition"
                   title="Cancel"
                 >
-                  <FiX size={18} />
+                  <FiX size={16} />
                 </button>
               </div>
             </>
           ) : (
             <>
-              <span>{link.key}: {link.value}</span>
-              <div className="flex flex-col gap-2 ml-3">
+              <span className="truncate">{link.key}: {link.value}</span>
+              <div className="flex gap-1 ml-2">
                 <button
                   onClick={() => { setEditIndex(index); setEditValue(link.value); }}
-                  className="text-green-700 hover:text-green-800 cursor-pointer transition p-2"
+                  className="text-green-700 hover:text-green-800 p-1 transition"
                   title="Edit"
                 >
-                  <FiEdit size={18} />
+                  <FiEdit size={16} />
                 </button>
                 <button
                   onClick={() => handleDelete(index)}
-                  className="p-2 rounded-lg text-red-600 hover:bg-red-100 transition"
+                  className="text-red-600 hover:bg-red-100 p-1 rounded transition"
                   title="Delete"
                 >
-                  <FiTrash2 size={18} />
+                  <FiTrash2 size={16} />
                 </button>
               </div>
             </>
@@ -102,26 +103,27 @@ const SocialLinks = () => {
         </div>
       ))}
 
-      <div className="flex gap-2 mt-3">
+      {/* Add New */}
+      <div className="flex gap-1 mt-2">
         <input
           type="text"
           placeholder="Social Name"
           value={newKey}
           onChange={(e) => setNewKey(e.target.value)}
-          className="flex-1 px-3 py-2 border border-green-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-700"
+          className="flex-1 px-2 py-1 border border-green-300 rounded text-xs text-gray-700 focus:outline-none focus:ring-1 focus:ring-green-700"
         />
         <input
           type="text"
           placeholder="URL"
           value={newValue}
           onChange={(e) => setNewValue(e.target.value)}
-          className="flex-1 px-3 py-2 border border-green-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-700"
+          className="flex-1 px-2 py-1 border border-green-300 rounded text-xs text-gray-700 focus:outline-none focus:ring-1 focus:ring-green-700"
         />
         <button
           onClick={handleAdd}
-          className="px-4 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition"
+          className="px-2 py-1 bg-green-700 text-white rounded hover:bg-green-800 transition flex items-center gap-1 text-xs"
         >
-          Add
+          <FiPlus size={16} /> Add
         </button>
       </div>
     </div>
@@ -129,4 +131,3 @@ const SocialLinks = () => {
 };
 
 export default SocialLinks;
-

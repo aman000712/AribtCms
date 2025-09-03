@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 import AddGallery from "../pageComponents/Gallery/AddGallery";
 
 const Gallery = () => {
@@ -53,33 +54,33 @@ const Gallery = () => {
       {galleryItems.length === 0 ? (
         <p className="text-gray-500 text-center py-16">No gallery items yet.</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {galleryItems.map((item) => (
             <div
               key={item.id}
-              className="bg-green-100 rounded-xl shadow-sm border border-gray-100 overflow-hidden relative hover:bg-green-50 transition cursor-pointer"
+              className=" rounded-xl shadow-sm  overflow-hidden relative group"
             >
               <img
                 src={item.url}
                 alt={item.category}
-                className="w-full h-48 object-cover rounded-t-xl"
+                className="w-full h-32 object-cover rounded-t-xl" // smaller height
               />
-              <div className="p-4 flex justify-between items-center">
-                <span className="px-3 py-1 inline-flex text-xs font-semibold rounded-full bg-teal-100 text-teal-800 capitalize">
+              <div className="p-3 flex justify-between items-center">
+                <span className="px-2 py-0.5 inline-flex text-xs font-semibold rounded-full bg-teal-100 text-teal-800 capitalize">
                   {item.category}
                 </span>
-                <div className="flex gap-2">
+                <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition text-sm">
                   <button
                     onClick={() => handleEdit(item)}
-                    className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200 transition text-xs"
+                    className="p-1 bg-yellow-100 text-yellow-800 rounded hover:bg-yellow-200 transition"
                   >
-                    Edit
+                    <FiEdit />
                   </button>
                   <button
                     onClick={() => handleDelete(item.id)}
-                    className="px-2 py-1 bg-red-100 text-red-800 rounded hover:bg-red-200 transition text-xs"
+                    className="p-1 bg-red-100 text-red-800 rounded hover:bg-red-200 transition"
                   >
-                    Delete
+                    <FiTrash2 />
                   </button>
                 </div>
               </div>
@@ -89,7 +90,7 @@ const Gallery = () => {
       )}
 
       {showAddForm && (
-        <div className="bg-green-800 hover:bg-green-700">
+        <div className="fixed inset-0 bg-white bg-opacity-95 flex justify-center items-start p-6 pt-16 z-50 overflow-auto">
           <AddGallery
             gallery={editingItem}
             onSave={handleSaveGallery}
