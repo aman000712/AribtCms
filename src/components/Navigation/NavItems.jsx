@@ -1,12 +1,17 @@
-import { RiHomeHeartLine } from "react-icons/ri";
-import { MdOutlinePermContactCalendar, MdOutlineSchool } from "react-icons/md";
+import { RiCustomerServiceFill, RiHomeHeartLine } from "react-icons/ri";
+import { MdDashboard, MdOutlinePermContactCalendar, MdOutlineSchool } from "react-icons/md";
 import { IoMdPerson } from "react-icons/io";
 import { BiLogOut } from "react-icons/bi";
+import { ImBlog } from "react-icons/im";
+import { GiTeamDowngrade } from "react-icons/gi";
+import { GrContact, GrGallery } from "react-icons/gr";
+import { BsChatSquareQuote } from "react-icons/bs";
+import { FaLink } from "react-icons/fa";
 
 export const navItems = [
   {
     title: "Dashboard",
-    icon: RiHomeHeartLine,
+    icon: MdDashboard,
     to: "/dashboard"
   },
   {
@@ -16,7 +21,7 @@ export const navItems = [
   },
   {
     title: "Services",
-    icon: IoMdPerson,
+    icon: RiCustomerServiceFill,
     to: "/services"
   },
   {
@@ -26,33 +31,33 @@ export const navItems = [
   },
   {
     title: "Blog",
-    icon: MdOutlineSchool,
+    icon: ImBlog,
     to: "/blog"
   },
   {
     title: "Team",
-    icon: MdOutlinePermContactCalendar,
+    icon:GiTeamDowngrade,
     to: "/team"
   },
  
   {
     title: "Media Gallery",
-    icon: IoMdPerson,
+    icon: GrGallery,
     to: "/gallery"
   },
    {
     title: "Testimonials",
-    icon: MdOutlinePermContactCalendar,
+    icon: BsChatSquareQuote,
     to: "/testimonials"
   },
   {
     title: "Contact Inquries",
-    icon: IoMdPerson,
+    icon: GrContact,
     to: "/contact"
   },
   {
     title: " Management",
-    icon: IoMdPerson,
+    icon: FaLink,
     to: "/footer"
   },
 

@@ -6,9 +6,27 @@ const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="h-screen w-64 flex flex-col bg-white border-r border-gray-100 shadow-sm">
+    <div className="h-screen w-64 flex flex-col bg-white border-r border-gray-50 shadow-sm">
       <div className="px-6 py-5">
-        <h1 className="text-xl font-bold text-green-700">ARIBT</h1>
+        <a
+          href="https://e-aribt.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div
+            className="w-full h-16 flex items-center justify-center 
+                  bg-gradient-to-r from-green-400 to-green-600 
+                  rounded-md shadow-sm transform transition-transform duration-200 
+                  hover:scale-105 hover:shadow-lg cursor-pointer"
+          >
+            <img
+              src="/images/logo.png"
+              alt="ARIBT Logo"
+              className="h-10 w-auto"
+            />
+          </div>
+        </a>
+
         <p className="text-green-800 text-xs mt-1">Navigation Panel</p>
       </div>
 
@@ -34,7 +52,11 @@ const Sidebar = () => {
                 >
                   <Icon
                     size={18}
-                    className={isActive ? "text-green-600" : "text-gray-500 hover:text-green-600"}
+                    className={
+                      isActive
+                        ? "text-green-600"
+                        : "text-gray-500 hover:text-green-600"
+                    }
                   />
                   <span className="font-medium">{item.title}</span>
                   {isActive && (

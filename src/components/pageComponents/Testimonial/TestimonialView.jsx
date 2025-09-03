@@ -51,7 +51,6 @@ const TestimonialView = () => {
             className="inline-flex items-center px-4 py-2 bg-green-700 hover:bg-green-800 text-white rounded-lg transition-colors"
           >
             <ArrowLeft size={16} className="mr-2" />
-            Back to Testimonials
           </Link>
         </div>
       </div>
@@ -59,7 +58,7 @@ const TestimonialView = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-6">
           <Link
@@ -71,30 +70,48 @@ const TestimonialView = () => {
           </Link>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-6">
-          <div className="mb-4">
-            <h1 className="text-3xl font-bold text-gray-900 break-words">{testimonial.name}</h1>
-            {testimonial.designation && (
-              <div className="flex items-center text-gray-600 mt-2">
-                <User size={18} className="mr-2 text-gray-400" />
-                <span>{testimonial.designation}</span>
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden p-6 flex flex-col md:flex-row gap-6">
+          
+          <div className="flex-shrink-0">
+            {testimonial.image ? (
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="w-64 h-64 object-cover rounded-lg"
+              />
+            ) : (
+              <div className="w-64 h-64 bg-gray-200 flex items-center justify-center rounded-lg text-gray-400">
+                No Image
               </div>
             )}
           </div>
 
-          {testimonial.rating && (
-            <div className="flex items-center text-gray-600 mb-4">
-              <Star size={18} className="mr-2 text-yellow-400" />
-              <span>{testimonial.rating}</span>
+          <div className="flex-1">
+            <div className="mb-4">
+              <h1 className="text-3xl font-bold text-gray-900 break-words">{testimonial.name}</h1>
+              {testimonial.designation && (
+                <div className="flex items-center text-gray-600 mt-2">
+                  <User size={18} className="mr-2 text-gray-400" />
+                  <span>{testimonial.designation}</span>
+                </div>
+              )}
             </div>
-          )}
 
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">Message</h3>
-            <p className="text-gray-700 leading-relaxed break-words whitespace-pre-line">
-              {testimonial.message || "No message provided."}
-            </p>
+            {testimonial.rating && (
+              <div className="flex items-center text-gray-600 mb-4">
+                <Star size={18} className="mr-2 text-yellow-400" />
+                <span>{testimonial.rating}</span>
+              </div>
+            )}
+
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Message</h3>
+              <p className="text-gray-700 leading-relaxed break-words whitespace-pre-line">
+                {testimonial.message || "No message provided."}
+              </p>
+            </div>
           </div>
+
         </div>
       </div>
     </div>

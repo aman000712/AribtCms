@@ -35,7 +35,7 @@ const ContactImages = () => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-4 p-4 bg-green-100 rounded-xl shadow-md">
+    <div className="flex flex-col items-center gap-4 p-4 bg-green-50 rounded-xl shadow-md">
       <h2 className="text-xl font-bold text-green-800">Manage Hero Images</h2>
 
       <div className="flex flex-wrap gap-4 mt-2 w-full justify-center">
